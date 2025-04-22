@@ -14,15 +14,9 @@ Documentation is essential but often lacks practical examples that speak to the 
 
 Docky acts like a personal assistant for documentation, turning static pages into interactive learning tools.
 
----
-
 ## ⚙️ Setup Instructions
 
----
-
 ## ✅ Features
-
----
 
 ## 👥 Individual Contributions
 
@@ -32,7 +26,5 @@ Docky acts like a personal assistant for documentation, turning static pages int
 | **Christian Ishimwe** |  |
 | **Matthew Yin** |  |
 | **Michael Imevbore** |  |
-
----
 
 ## 🏗️ Future Work
