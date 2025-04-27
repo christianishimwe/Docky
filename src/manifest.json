@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Docky",
+  "version": "1.0",
+  "description": "Generate code examples from selected text using OpenAI.",
+  "permissions": [
+    "contextMenus",
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "/images/icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
