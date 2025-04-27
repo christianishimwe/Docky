@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
           contextText: selectedText,
           language: 'JavaScript', // TODO: add actual language
           complexity: 'beginner', // TODO: add actual complexity
+          formattingOptions: ['indentation', 'comments'] // TODO: add actual formatting options
         });
         const cleanedCode = cleanupCodeSnippet(rawCode);
         document.getElementById('generatedCode').textContent = cleanedCode;
