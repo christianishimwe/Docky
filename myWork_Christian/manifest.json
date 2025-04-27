@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Code Example Generator",
+  "name": "Docky",
   "version": "1.0",
   "description": "Generate code examples from selected text using OpenAI.",
   "permissions": [
