@@ -1,3 +1,5 @@
+import { generateCodeSnippet, cleanupCodeSnippet } from './aiService.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   // Retrieve the selected text from storage
   chrome.storage.local.get(['selectedText', 'apiKey'], (data) => {
@@ -12,33 +14,28 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  document.getElementById('generate').addEventListener('click', () => {
+  document.getElementById('generate').addEventListener('click', async () => {
     const selectedText = document.getElementById('selectedText').value;
-    chrome.storage.local.get('apiKey', (data) => {
+    chrome.storage.local.get('apiKey', async (data) => {
       const apiKey = data.apiKey;
       if (!apiKey) {
         alert('Please enter and save your OpenAI API Key.');
         return;
       }
 
-      // Send the selected text to the OpenAI API
-      fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${apiKey}`
-        },
-        body: JSON.stringify({
-          prompt: `Generate a code example for: ${selectedText}`,
-          max_tokens: 150
-        })
-      })
-      .then(response => response.json())
-      .then(data => {
-        const generatedCode = data.choices[0].text;
-        document.getElementById('generatedCode').textContent = generatedCode;
-      })
-      .catch(error => console.error('Error:', error));
+      try {
+        const rawCode = await generateCodeSnippet({
+          apiKey,
+          contextText: selectedText,
+          language: 'JavaScript', // TODO: add actual language
+          complexity: 'beginner', // TODO: add actual complexity
+        });
+        const cleanedCode = cleanupCodeSnippet(rawCode);
+        document.getElementById('generatedCode').textContent = cleanedCode;
+      } catch (error) {
+        console.error('Error:', error);
+        alert(`Failed to generate code. See console for details. ${error}`);
+      }
     });
   });
 });
