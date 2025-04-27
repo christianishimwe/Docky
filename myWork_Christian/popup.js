@@ -1,3 +1,3 @@
 document.getElementById('generate').addEventListener('click', () => {
-  // Logic to trigger code generation
+  // Logic to trigger code generatio
 });
