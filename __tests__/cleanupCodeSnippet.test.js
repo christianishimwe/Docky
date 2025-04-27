@@ -1,4 +1,4 @@
-import { cleanupCodeSnippet } from '../aiService';
+import { cleanupCodeSnippet } from '../src/aiService';
 
 describe('cleanupCodeSnippet', () => {
   test('removes triple backticks and language specifier', () => {
