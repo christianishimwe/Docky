@@ -4,7 +4,7 @@
  * Test file for aiService.js (assuming aiIntegration.js was renamed to aiService.js)
  */
 
-import { generateCodeSnippet, cleanupCodeSnippet } from '../aiService';
+import { generateCodeSnippet, cleanupCodeSnippet } from '../src/aiService';
 
 const fetch = require('node-fetch');
 global.fetch = fetch;
