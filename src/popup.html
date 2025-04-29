@@ -3,14 +3,54 @@
 <head>
   <title>Code Example Generator</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>Code Example Generator</h1>
-  <textarea id="selectedText" rows="4" cols="50"></textarea>
-  <input type="password" id="apiKey" placeholder="Enter OpenAI API Key" />
-  <button id="saveKey">Save API Key</button>
-  <button id="generate">Generate Code Example</button>
-  <pre id="generatedCode"></pre>
-  <script type="module" src="popup.js"></script>
+  <div class="container">
+    <h1>Code Example Generator</h1>
+    
+    <div class="input-section">
+      <label for="selectedText">Selected Text:</label>
+      <textarea id="selectedText" rows="4" placeholder="Your code will appear here..."></textarea>
+    </div>
+
+    <div class="api-section">
+      <label for="apiKey">OpenAI API Key:</label>
+      <div class="api-input-group">
+        <input type="password" id="apiKey" placeholder="Enter your OpenAI API Key" />
+        <button id="saveKey" class="btn secondary">Save Key</button>
+      </div>
+    </div>
+
+    <div class="language-section">
+      <label>Select Language:</label>
+      <div class="language-buttons">
+        <button class="lang-btn" data-lang="python">Python</button>
+        <button class="lang-btn" data-lang="javascript">JavaScript</button>
+        <button class="lang-btn" data-lang="cpp">C++</button>
+        <button class="lang-btn" data-lang="java">Java</button>
+        <button class="lang-btn" data-lang="typescript">TypeScript</button>
+      </div>
+    </div>
+
+    <div class="format-section">
+      <label for="formatOptions">Formatting Options:</label>
+      <select id="formatOptions" multiple>
+        <option value="indent" selected>Proper Indentation</option>
+        <option value="newlines" selected>New Lines</option>
+        <option value="backspace" selected>Backspace</option>
+        <option value="comments">Add Comments</option>
+        <option value="spacing">Consistent Spacing</option>
+      </select>
+    </div>
+
+    <button id="generate" class="btn primary">Generate Code Example</button>
+
+    <div class="output-section">
+      <label>Generated Code:</label>
+      <pre id="generatedCode"></pre>
+    </div>
+  </div>
+  <script src="popup.js" type="module"></script>
 </body>
 </html>
