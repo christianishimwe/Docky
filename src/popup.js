@@ -47,19 +47,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const contextText = document.getElementById('selectedText').value;
       const apiKey = document.getElementById('apiKey').value;
       
-      // Get formatting options
-      const formatOptions = Array.from(document.getElementById('formatOptions').selectedOptions)
-        .map(option => option.value);
-      
-      // Determine complexity based on format options
-      const complexity = formatOptions.includes('comments') ? 'intermediate' : 'beginner';
+      if (!apiKey) {
+        throw new Error('Please enter and save your OpenAI API Key first.');
+      }
 
-      // Generate code
+      if (!contextText.trim()) {
+        throw new Error('Please enter some text to generate code from.');
+      }
+
+      // Generate code with default formatting
       const rawSnippet = await generateCodeSnippet({
         apiKey,
         contextText,
         language: selectedLanguage,
-        complexity,
+        complexity: 'intermediate', // Default to intermediate for better code quality
       });
 
       // Clean and display the snippet
