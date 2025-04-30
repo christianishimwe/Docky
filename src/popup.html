@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>Code Example Generator</h1>
+    <h1>Docky</h1>
     
     <div class="input-section">
       <label for="selectedText">Selected Text:</label>
@@ -31,6 +31,28 @@
         <button class="lang-btn" data-lang="java">Java</button>
         <button class="lang-btn" data-lang="typescript">TypeScript</button>
       </div>
+    </div>
+
+    <div class="complexity-section">
+      <label>Select Complexity Level:</label>
+      <div class="complexity-buttons">
+        <button class="complx-btn" data-lang="1">1</button>
+        <button class="complx-btn" data-lang="2">2</button>
+        <button class="complx-btn" data-lang="3">3</button>
+        <button class="complx-btn" data-lang="4">4</button>
+        <button class="complx-btn" data-lang="5">5</button>
+      </div>
+    </div>
+
+    <div class="format-section">
+      <label for="formatOptions">Formatting Options:</label>
+      <select id="formatOptions" multiple>
+        <option value="indent" selected>Proper Indentation</option>
+        <option value="newlines" selected>New Lines</option>
+        <option value="backspace" selected>Backspace</option>
+        <option value="comments">Add Comments</option>
+        <option value="spacing">Consistent Spacing</option>
+      </select>
     </div>
 
     <button id="generate" class="btn primary">Generate Code Example</button>
