@@ -2,7 +2,7 @@
 chrome.runtime.onInstalled.addListener(() => {
   chrome.contextMenus.create({
     id: "generateCodeExample", // Unique ID for the context menu item
-    title: "Generate Code Example", // Text shown in the context menu
+    title: "Docky", // Text shown in the context menu
     contexts: ["selection"] // Only show this item when text is selected
   });
 });
