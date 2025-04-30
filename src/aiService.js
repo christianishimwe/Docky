@@ -8,6 +8,7 @@ const OPENAI_API_URL = 'https://api.openai.com/v1/chat/completions';
  * @param {string} options.contextText - Extracted documentation text to base the snippet on.
  * @param {string} [options.language='JavaScript'] - Desired programming language for the snippet.
  * @param {string} [options.complexity='intermediate'] - Complexity level: 'beginner', 'intermediate', 'advanced'.
+ * @param {string[]} [params.formattingOptions]  Array of formatting instructions. 
  * @param {string} [options.model='gpt-3.5-turbo'] - OpenAI model to use.
  * @param {number} [options.temperature=0.2] - Sampling temperature.
  * @param {number} [options.maxTokens=500] - Max tokens in response.
@@ -19,6 +20,7 @@ export async function generateCodeSnippet({
   contextText,
   language = 'JavaScript',
   complexity = 'intermediate',
+  formattingOptions = [],
   model = 'gpt-3.5-turbo',
   temperature = 0.2,
   maxTokens = 500,
@@ -27,17 +29,30 @@ export async function generateCodeSnippet({
   if (!apiKey) {
     throw new Error('OpenAI API key is required');
   }
+
+  const promptLines = [
+    `Generate a ${complexity} out of 5 complexity level example in ${language}.`,
+    `Here is the documentation or context to base your example on:`,
+    `"""`,
+    contextText.trim(),
+    `"""`,
+  ];
+
+  if (formattingOptions.length > 0) {
+    promptLines.push(
+      `Please apply the following formatting options to the code snippet:`,
+      `- ${formattingOptions.join('\n- ')}`
+    );
+  }
   const systemMessage = {
     role: 'system',
-    content: 'You are a helpful assistant that generates code snippets based on provided documentation context.',
+    content: 'You are a helpful assistant that generates code snippets based on provided documentation context. You only respond in code',
   };
   const userMessage = {
     role: 'user',
-    content: `Context:
-${contextText}
-
-Please generate a ${complexity} level ${language} code example demonstrating the above context. Only return the code snippet.`,
-  };
+    content: promptLines.join('\n')};
+  
+  console.log(promptLines.join('\n'));
 
   const response = await fetch(OPENAI_API_URL, {
     method: 'POST',

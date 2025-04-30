@@ -15,6 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Initialize complexity buttons
+  let selectedComplexity = '2';
+  const complexButtons = document.querySelectorAll('.complx-btn');
+  complexButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Remove active class from all buttons
+      complexButtons.forEach(b => b.classList.remove('active'));
+      // Add active class to clicked button
+      btn.classList.add('active');
+      selectedComplexity = btn.dataset.lang;
+    });
+  });
+
   // Set Python as default active language
   document.querySelector('[data-lang="python"]').classList.add('active');
 
@@ -55,12 +68,17 @@ document.addEventListener('DOMContentLoaded', () => {
         throw new Error('Please enter some text to generate code from.');
       }
 
+      const formatSelect = document.getElementById('formatOptions');
+      const formattingOptions = Array.from(formatSelect.selectedOptions)
+        .map(opt => opt.value);
+
       // Generate code with default formatting
       const rawSnippet = await generateCodeSnippet({
         apiKey,
         contextText,
         language: selectedLanguage,
-        complexity: 'intermediate', // Default to intermediate for better code quality
+        complexity: selectedComplexity,
+        formattingOptions,
       });
 
       // Clean and display the snippet
