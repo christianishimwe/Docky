@@ -56,6 +56,12 @@ Docky acts like a personal assistant for documentation, turning static pages int
 **Non-Intrusive UI**
 - Popup UI when you use the extension that shows you the generated snippet
 
+<img width="1476" alt="Screenshot 2025-04-30 at 4 07 35 AM 2" src="https://github.com/user-attachments/assets/40f01b03-ccd2-488e-85b9-92265c1d7956" />
+
+<img width="1481" alt="Screenshot 2025-04-30 at 4 39 30 AM" src="https://github.com/user-attachments/assets/1d26c843-b370-47e9-b9b7-ef8c384086e4" />
+
+<img width="1489" alt="Screenshot 2025-04-30 at 4 39 41 AM" src="https://github.com/user-attachments/assets/6d09783e-0740-4a19-88cb-eb6f72f543c9" />
+
 ## 👥 Individual Contributions
 
 | Name              | Contributions |
